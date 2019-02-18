@@ -138,12 +138,12 @@ function mkPuzzlePieces() {
 //---------------------------------------------------------------------
 
 function dragNdrop() {
-  /* events fired on the draggable target */
+  /* aevents fired on the draggable target */
   document.addEventListener("drag", function(event) {});
   document.addEventListener("dragstart", function(event) {
     // store a ref. on the dragged elem
     dragged = event.target;
-
+    dragged.style.cursor = "grabbing";
     // make it half transparent
     event.target.style.opacity = 0.5;
   });
@@ -161,6 +161,8 @@ function dragNdrop() {
     // prevent default action (open as link for some elements)
     event.preventDefault();
     console.log("DROP", event.target.className);
+    dragged.style.cursor = "grab";
+
     // move dragged elem to the selected drop target
     if (event.target.className == "frame") {
       event.target.style.background = "";
